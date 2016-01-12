@@ -1,31 +1,44 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-    <h1>Add A Story</h1>
-    <form method="post" action="/addstory">
-      <label>
-        Title:
-        <input class="input-group" type="text" name="title" ng-model="story.title" required>
-      </label>
+    <form class="addStoryForm" ng-hide="hideForm" method="post" action="/api/v1/stories/post">
+      <h1>Add A Story</h1>
       <br>
-      <label>
-        Link:
-        <input class="input-group" type="url" name="link" ng-model="story.link" required>
-      </label>
+      <label>Title:</label>
+      <input class="input-group" type="text" name="title" ng-model="story.title" required>
       <br>
-      <label>
-        Image:
-        <input class="input-group" type="url" name="image" ng-model="story.image" required>
-      </label>
+      <label>Link:</label>
+      <input class="input-group" type="url" name="link" ng-model="story.link" required>
       <br>
-      <label>
-        Summary:
-        <textarea class="input-group" name="summary" cols="30" rows="10"></textarea>
-      </label>
+      <label>Image:</label>
+      <input class="input-group" type="url" name="image" ng-model="story.image" required>
+      <br>
+      <label>Summary:</label>
+      <textarea class="input-group" name="summary" cols="30" rows="10" ng-model="story.summary"></textarea>
+      <button id="linkitup" type="button" ng-click="postStory()" class="btn btn-primary">Link it up!</button>
      </form> 
     </div>
     <div class="col-md-4">
-      
+      <a ng-hide="hideForm" ng-click="hideForm = true"><h3>Hide</h3></a>
+      <a ng-hide="!hideForm" ng-click="hideForm = false"><h3>Show</h3></a>
+    </div>
+  </div>
+  <div class="row">
+    <br>
+    <h1>Today's News</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <img src="{{stories[0].image}}" class="previewImg">
+      <h3>{{stories[0].title}}</h3>
+    </div>
+    <div class="col-md-4">
+      <img src="{{stories[1].image}}" class="previewImg">
+      <h3>{{stories[1].title}}</h3>
+    </div>
+    <div class="col-md-4">
+      <img src="{{stories[2].image}}" class="previewImg">
+      <h3>{{stories[2].title}}</h3>
     </div>
   </div>
 </div>
