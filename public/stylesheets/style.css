@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+nav {
+  margin-left: -50px;
+  margin-right: -50px;
+  margin-top: -50px;
+  width: 110%;
+  background-image: url("/images/books.jpg");
+  height: 300px;
+}
+
+#header-title {
+  margin-left: 50px;
+  margin-top: 35px;
+  padding-left: 30px;
+  width: 600px;
+  height: 200px;
+  opacity: 0.6;
+  border: 5px solid gray;
+  border-radius: 3px;
+}

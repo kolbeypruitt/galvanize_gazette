@@ -1,15 +1,27 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-     <h1>Add A Story</h1>
-     <form method="post" action="/addstory">
-       <input class="input-group" type="text" name="title" id="title">
-       <br>
-       <input class="input-group" type="url" name="link" id="link">
-       <br>
-       <input class="input-group" type="url" name="img" id="img">
-       <br>
-       <textarea class="input-group" name="summary" id="" cols="30" rows="10"></textarea>
+    <h1>Add A Story</h1>
+    <form method="post" action="/addstory">
+      <label>
+        Title:
+        <input class="input-group" type="text" name="title" ng-model="story.title" required>
+      </label>
+      <br>
+      <label>
+        Link:
+        <input class="input-group" type="url" name="link" ng-model="story.link" required>
+      </label>
+      <br>
+      <label>
+        Image:
+        <input class="input-group" type="url" name="image" ng-model="story.image" required>
+      </label>
+      <br>
+      <label>
+        Summary:
+        <textarea class="input-group" name="summary" cols="30" rows="10"></textarea>
+      </label>
      </form> 
     </div>
     <div class="col-md-4">
