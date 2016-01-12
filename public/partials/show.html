@@ -1,0 +1,39 @@
+<div class="container" ng-controller="ShowController">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <h1>{{story.title}}</h1>
+      <br>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="{{story.image}}" class="previewImg">
+        </div>
+        <div class="col-md-6">
+          <p>{{story.summary}}</p>
+          <br>
+          <a href="{{story.link}}">View Site</a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Opinions</h1>
+          <p>What's your opinion?</p>
+          <textarea name="opinion" cols="60" rows="7" ng-model="story.opinion"></textarea>
+          <button id="opine" type="button" ng-click="postOpinion()" class="btn btn-primary">Opine</button>
+        </div>
+        <div class="col-md-6">
+          <h1>Expert Analysis</h1>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1">
+    </div>
+  </div>
+</div>

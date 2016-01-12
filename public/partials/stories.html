@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" ng-controller="StoryController">
   <div class="row">
     <div class="col-md-8">
     <form class="addStoryForm" ng-hide="hideForm" method="post" action="/api/v1/stories/post">
@@ -28,18 +28,24 @@
     <h1>Today's News</h1>
   </div>
   <div class="row">
+    <a href="/stories/{{stories[0]._id}}">
     <div class="col-md-4">
       <img src="{{stories[0].image}}" class="previewImg">
       <h3>{{stories[0].title}}</h3>
     </div>
+  </a>
+  <a href="/stories/{{stories[1]._id}}">
     <div class="col-md-4">
       <img src="{{stories[1].image}}" class="previewImg">
       <h3>{{stories[1].title}}</h3>
     </div>
+  </a>
+  <a href="/stories/{{stories[2]._id}}">
     <div class="col-md-4">
       <img src="{{stories[2].image}}" class="previewImg">
       <h3>{{stories[2].title}}</h3>
     </div>
+  </a>
   </div>
 </div>
 
