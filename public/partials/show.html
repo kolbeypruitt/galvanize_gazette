@@ -35,6 +35,10 @@
         </div>
         <div class="col-md-6">
           <h1>Expert Analysis</h1>
+            <div ng-repeat="(key, value) in stats">
+              <hr>
+              <p>{{key}} : {{value}}</p>
+            </div>
         </div>
       </div>
     </div>

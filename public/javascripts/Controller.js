@@ -15,6 +15,39 @@ angular.module('myApp', ['ngRoute'])
   .controller('ShowController', function($scope, $http, $routeParams) {    
     $http.get('/api/v1/stories/' + $routeParams.id).then(function (response) {
       $scope.story = response.data;
+
+      var words = [];
+      for (var i = 0; i < $scope.story.opinions.length; i++) {
+        var arr = $scope.story.opinions[i].split(' ');
+        for (var j = 0; j < arr.length; j++) {
+          words.push(arr[j]);
+        }
+      }
+      var count = function(ary, classifier) {
+        return ary.reduce(function(counter, item) {
+          var p = (classifier || String)(item);
+          counter[p] = counter.hasOwnProperty(p) ? counter[p] + 1 : 1;
+          return counter;
+        }, {})
+      }
+
+      function cleaner(stats) {
+        for (var prop in stats) {
+          if (stats.hasOwnProperty(prop)) {
+            if (prop.toUpperCase()=='the'.toUpperCase() ||
+                prop.toUpperCase()=='a'.toUpperCase() ||
+                prop.toUpperCase()=='I'.toUpperCase() ||
+                prop.toUpperCase()=='it'.toUpperCase() ||
+                prop.toUpperCase()=='of'.toUpperCase() ||
+                prop.toUpperCase()=='not'.toUpperCase()
+            ) {
+              delete stats[prop];
+            }
+          }
+        }
+        return stats;
+      }
+      $scope.stats = cleaner(count(words));
     })
 
     $scope.postOpinion = function () {
@@ -22,14 +55,7 @@ angular.module('myApp', ['ngRoute'])
       $scope.story.opinion = null;
       $http.post('/api/v1/stories/' + $routeParams.id, opinion );
     }
-    console.log(this.story);
-    var arr = [];
-    // var opinions = $scope.story.opinions;
-    // for (var i = 0; i < this.story.opinions.length; i++) {
-    //   var word = opinions[i].split(' ');
-    //   arr.push(word);
-    // }
-    // console.log(arr);
+
   })
   .config(function ($routeProvider, $locationProvider ) {
     $routeProvider
