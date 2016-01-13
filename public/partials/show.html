@@ -27,6 +27,11 @@
           <p>What's your opinion?</p>
           <textarea name="opinion" cols="60" rows="7" ng-model="story.opinion"></textarea>
           <button id="opine" type="button" ng-click="postOpinion()" class="btn btn-primary">Opine</button>
+          <br>
+          <div ng-repeat="opinion in story.opinions track by $index">
+            <hr>
+            <p>{{opinion}}</p>
+          </div>
         </div>
         <div class="col-md-6">
           <h1>Expert Analysis</h1>

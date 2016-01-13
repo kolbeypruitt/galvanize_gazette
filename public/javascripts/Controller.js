@@ -18,10 +18,18 @@ angular.module('myApp', ['ngRoute'])
     })
 
     $scope.postOpinion = function () {
-      var opinion = { opinion: this.story.opinion};
+      var opinion = { opinion: this.story.opinion };
       $scope.story.opinion = null;
-      return $http.post('/api/v1/stories/' + $routeParams.id, opinion );
+      $http.post('/api/v1/stories/' + $routeParams.id, opinion );
     }
+    console.log(this.story);
+    var arr = [];
+    // var opinions = $scope.story.opinions;
+    // for (var i = 0; i < this.story.opinions.length; i++) {
+    //   var word = opinions[i].split(' ');
+    //   arr.push(word);
+    // }
+    // console.log(arr);
   })
   .config(function ($routeProvider, $locationProvider ) {
     $routeProvider
