@@ -18,7 +18,7 @@ angular.module('myApp', ['ngRoute'])
     })
 
     $scope.postOpinion = function () {
-      var opinion = this.story.opinion;
+      var opinion = { opinion: this.story.opinion};
       $scope.story.opinion = null;
       return $http.post('/api/v1/stories/' + $routeParams.id, opinion );
     }

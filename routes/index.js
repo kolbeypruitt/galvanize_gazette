@@ -28,19 +28,23 @@ router.get('/api/v1/stories/:id', function (req, res, next) {
 })
 
 router.post('/api/v1/stories/:id', function (req, res, next) {
-  console.log(req.body);
-  console.log(req.params.id);
-  // var opinion = req.body;
+  var opinion = req.body.opinion;
+  var id = req.params.id;
+  var newStory = findOne({_id: req.params.id});
+    if (!newStory.opinions) {
+      newStory.opinions = [];
+    }
+    newStory.opinions.push(opinion);
+  return storydb.update({_id: id}, newStory );
   // return storydb.findOne({_id: req.params.id}).then(function (story) {
   //   var newStory = story;
   //   if (!newStory.opinions) {
   //     newStory.opinions = [];
   //   }
   //   newStory.opinions.push(opinion);
-
-  //   return storydb.update(story, newStory).then(function (newStory) {
-  //    console.log(newStory);
-  //   })
+  //   console.log(story);
+  //   console.log(newStory);
+  //   return storydb.update(story, newStory );
   // })
 })
 
